@@ -5,6 +5,7 @@ import { PageContent } from "../components/PageContent"
 import { PageTitle } from "../components/PageTitle"
 import { PokeCard } from "../components/PokeCard"
 import { PokelistContainer } from "../components/PokelistContainer"
+import { Link } from "../routes"
 
 export const ListAllPokemonPage = () => {
   const data = useAllPokemon()
@@ -18,7 +19,9 @@ export const ListAllPokemonPage = () => {
             <Loading />
           ) : (
             data.map((pokemon) => (
-              <PokeCard pokemon={pokemon} key={pokemon.name} />
+              <Link to="/pokemons/:pokemonId" params={{ pokemonId: pokemon.id }}>
+                <PokeCard pokemon={pokemon} key={pokemon.name} />
+              </Link>
             ))
           )}
         </PokelistContainer>
